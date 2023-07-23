@@ -1,10 +1,10 @@
-# Title (replace with your title)
+# Regex for beginners
 
-Introductory paragraph (replace this with your text)
+Hello world! My name is Luc and I wrote up this document to give a brief overview of "Regular Expression" or commonly known as regex.
 
 ## Summary
 
-Briefly summarize the regex you will be describing and what you will explain. Include a code snippet of the regex. Replace this text with your summary.
+I briefly described the bullet points in the table of contents with a short summary, characters you would use for each bullet point, and a code snippet example.
 
 ## Table of Contents
 
@@ -30,6 +30,8 @@ Anchors are special characters used in regular expressions to match specific pos
 - $ (dollar): Matches the end of a string.
 
 ```
+Code Snippet Example
+
 const regex = /^Hello/;
 console.log(regex.test('Hello, World!')); // Output: true
 ```
@@ -43,6 +45,8 @@ Quantifiers are metacharacters in regular expressions that specify the number of
 - . (dot): Matches any character except a newline.
 
 ```
+Code Snippet Example
+
 const regex = /go*d/;
 console.log(regex.test('gd')); // Output: true
 ```
@@ -54,6 +58,8 @@ The OR operator in regular expressions allows you to match either one pattern or
 - | (Vertical Bar):
 
 ```
+Code Snippet Example
+
 const regex = /cat|dog/;
 
 console.log(regex.test('I have a cat')); // Output: true
@@ -72,6 +78,8 @@ Character classes in regular expressions provide a way to match specific sets or
 - \s: Matches any whitespace character.
 
 ```
+Code Snippet Example
+
 const regex = /[aeiou]/;
 console.log(regex.test('Hello')); // Output: true
 ```
@@ -85,22 +93,111 @@ Flags in regular expressions are optional parameters that modify the behavior of
 - m (multiline): Matches across multiple lines.
 
 ```
+Code Snippet Example
+
 const regex = /hello/gi;
 console.log('Hello, hello'.match(regex)); // Output: ['Hello', 'hello']
 ```
 
 ### Grouping and Capturing
 
+Grouping and capturing are features used to organize and extract specific parts of a text pattern. They allow you to group multiple characters together and treat them as a single unit or capture their matched values for further use. You enclose characters or subpatterns with parentheses.
+
+- () (parentheses): Groups patterns together and captures matched values.
+
+```
+Code Snippet Example
+
+const regex = /(hello), (world)/;
+const match = 'Hello, world'.match(regex);
+console.log(match[1]); // Output: 'Hello'
+console.log(match[2]); // Output: 'world'
+```
+
 ### Bracket Expressions
+
+Bracket expressions are a way to define a set or range of characters that you want to match against. They are specified by enclosing the desired characters inside square brackets "[]".
+
+- [a-z]: Matches any lowercase letter.
+- [A-Z]: Matches any uppercase letter.
+- [0-9]: Matches any digit.
+- [^0-9]: Matches any non-digit.
+
+```
+Code Snippet Example
+
+const regex = /[a-zA-Z]/;
+console.log(regex.test('Hello123')); // Output: true
+```
 
 ### Greedy and Lazy Match
 
+Greedy matching is used to match as much of the input string as possible while still satisfying the overall pattern. Greedy matching is useful when you want to capture the longest possible substring that matches a pattern.
+
+Lazy matching is used to match as little as possible while still satisfying the overall pattern. Lazy matching is useful when you want to capture the shortest possible substring.
+
+- Asterisk (*) - Matches zero or more occurrences of the preceding pattern.
+- Plus (+) - Matches one or more occurrences of the preceding pattern.
+- Question mark (?) - Matches zero or one occurrence of the preceding pattern. It is equivalent to {0,1}. 
+- Curly braces ({m,n}) - Matches a specific range of occurrences of the preceding pattern. The values 'm' and 'n' represent the minimum and maximum number of occurrences.
+
+- *? (lazy asterisk): Matches zero or more occurrences in a non-greedy manner.
+- +? (lazy plus): Matches one or more occurrences in a non-greedy manner.
+- ?? (lazy question mark): Matches zero or one occurrence in a non-greedy manner.
+
+```
+Code Snippet Example
+
+const regex = /a.*?b/;
+console.log('axbyb'.match(regex)); // Output: 'axb'
+```
+
 ### Boundaries
+
+Boundaries are special characters or assertions used to define specific positions in the text where matches should occur. They help in specifying the exact locations where patterns should start or end within a string.
+
+- \b (word boundary): Matches a word boundary.
+- \B (non-word boundary): Matches a non-word boundary.
+
+```
+Code Snippet Example
+
+const regex = /\bworld\b/;
+console.log(regex.test('Hello, world!')); // Output: true
+```
 
 ### Back-references
 
+Back-references allow you to refer back to previously matched groups within the pattern. They provide a way to reuse and manipulate captured text within the regex itself. 
+
+- \1, \2, etc.: Matches a previously captured group.
+
+```
+Code Snippet Example
+
+const regex = /(hello).*\1/;
+console.log(regex.test('hellohello')); // Output: true
+```
+
 ### Look-ahead and Look-behind
+
+Look-Ahead (?=): Look-ahead assertions are denoted by "(?=)" and specify a condition that must be met after the current position in the text. They are used to match a pattern only if it is followed by another pattern.
+
+Look-Behind (?<=): Look-behind assertions are denoted by "(?<=)" 
+and specify a condition that must be met before the current 
+position in the text. They are used to match a pattern only if it 
+is preceded by another pattern.
+
+```
+Code Snippet Example
+
+const positiveLookAheadPattern = /Hello(?=,)/;
+console.log(text.match(positiveLookAheadPattern)); // Output: ['Hello']
+
+const positiveLookBehindPattern = /(?<=,) World/;
+console.log(text.match(positiveLookBehindPattern)); // Output: [', World']
+```
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+I am a in training full-stack developer taking a bootcamp course through the University of Utah that used worked used to work for a tech company "Route" which ultimately inspired me to start my career in coding. I now work as an accountant for "Inspectre Solutions" which is a full service investigative and medical case management agency specializing in international worker’s compensation, Defense Base Act, war hazard claims. After I complete my coding bootcamp I intened on taking some time to sharpen my skills by doing projects for different coding languages before applying for junior developer jobs.
